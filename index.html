@@ -127,6 +127,35 @@ footer p.copyright {
     border-top: 1px solid #444;
 }
 
+    /* progress bar code here */
+
+    #progress-container {
+      width: 50%;
+      margin: 20% auto;
+      background: #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    #progress-bar {
+      height: 30px;
+      width: 0%;
+      background: #4caf50;
+      transition: width 0.2s ease-in-out;
+    }
+
+    #progress-text {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 16px;
+      color: #333;
+    }
+
+    #main-content {
+      display: none;
+    }
+  
+
     </style>
     <!--Start of Tawk.to Script-->
 <script type="text/javascript">
@@ -223,6 +252,27 @@ s0.parentNode.insertBefore(s1,s0);
     </div>
      <!--hizi ni code za picha za automatic slide nimezifungia hapa -->
 
+        <!--hizi ni code za progress bar -->
+    
+  <!-- Progress Bar Container -->
+  <div id="progress-container">
+    <div id="progress-bar"></div>
+  </div>
+  <p id="progress-text">Loading... 0%</p>
+
+  <!-- Content ya Website yako -->
+  <div id="main-content" style="display: none;">
+    <!-- Hii itakuwa content yako ya awali -->
+    <h1>Welcome to My Website</h1>
+    <p>This is your main content.</p>
+  </div>
+
+
+
+
+
+        
+
 
 <!-- hizi ni code za duara-->
 
@@ -315,5 +365,26 @@ s0.parentNode.insertBefore(s1,s0);
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    let progress = 0;
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress-text');
+    const mainContent = document.getElementById('main-content');
+
+    const loadProgress = setInterval(() => {
+      progress += 1;
+      progressBar.style.width = progress + '%';
+      progressText.textContent = Loading... ${progress}%;
+
+      if (progress === 100) {
+        clearInterval(loadProgress);
+        document.getElementById('progress-container').style.display = 'none';
+        progressText.style.display = 'none';
+        mainContent.style.display = 'block';
+      }
+    }, 50);
+  });
+</script>
 </body>
 </html>
