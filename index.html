@@ -52,8 +52,15 @@
     margin-right: 10px;
 }
         
-@media (max-width:600px){
+/* TABLET AND ABOVE (horizontal layout) */
+@media (min-width: 768px) {
+
 .nav .nav-link {
+    
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  
     color: #ffffff;
     font-size: 1.1rem;
 } }
